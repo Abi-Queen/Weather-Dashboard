@@ -19,18 +19,19 @@
   </head>
 
   <body>
-    <header class="d-flex justify-content center">
-      <h1 class="display-3">Weather Dashboard</h1>
+    <header class="display-flex justify-content-around text-center">
+      <h1 class>Weather Dashboard</h1>
     </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                Search for a City:
+    <div class="container text-center d-flex">
+        <div class="row d-flex">
+            <div class="col justify-content-center search">
+              <h2 clas="col">Search for a City:</h2>
+              <textarea class="col form-inline"></textarea>
             </div>
-            <div class="col-9">
-                <div class="col">
-                    <h2> City (date) symbol</h2>
+            <div class="col-9 main-display">
+                <div class="col current">
+                    <h2> City (<span id="month"></span> / <span id="day"></span> / <span id="year"></span>) <span class="fas fa-cloud-sun"></span></span></h2>
                     <ul>
                         <li>Temp: &#176</li>
                         <li>Wind: MPH</li>
@@ -40,20 +41,22 @@
                 </div>
                 <div class="col">
                     <h2>5-Day Forecast:</h2>
-                    <div class="col-2 forecast-card" id="card1">
-                        forecast1
-                    </div>
-                    <div class="col-2 forecast-card" id="card2">
-                        forecast2
-                    </div>
-                    <div class="col-2 forecast-card" id="card3">
-                        forecast3
-                    </div>
-                    <div class="col-2 forecast-card" id="card4">
-                        forecast4
-                    </div>
-                    <div class="col-2 forecast-card" id="card5">
-                        forecast5
+                    <div class="row forecasts">
+                      <div class="col-2 forecast-card" id="card1">
+                          forecast1
+                      </div>
+                      <div class="col-2 forecast-card" id="card2">
+                          forecast2
+                      </div>
+                      <div class="col-2 forecast-card" id="card3">
+                          forecast3
+                      </div>
+                      <div class="col-2 forecast-card" id="card4">
+                          forecast4
+                      </div>
+                      <div class="col-2 forecast-card" id="card5">
+                          forecast5
+                      </div>
                     </div>
                 </div>
 
@@ -65,6 +68,7 @@
   
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,57 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1;
+}
+
+textarea {
+  background: transparent;
+  border: 1px solid black;
+  resize: none;
+  color: #000000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+header {
+  background-image: linear-gradient(to right, #b3ccff, #00005b);
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  text-align: left;
+}
+
+h2, h1 {
+  font-weight: bold;
+}
+
+.search {
+  border-right: 2px solid black;
+  padding: 20px;
+}
+
+.main-display {
+  text-align: left;
+  padding: 20px;
+}
+
+.forecast-card {
+  border: 1px solid black;
+  background-color: rgb(23, 30, 105); 
+  color: white;
+}
+
+.forecasts {
+  justify-content: space-between;
+}
+
+.current {
+  border: 2px solid black;
+}
+
+.btn {
+  border-radius: 5px;
+  background: gray;
+}
