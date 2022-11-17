@@ -27,12 +27,18 @@
         <div class="row d-flex">
             <div class="col justify-content-center search">
               <h2 clas="col">Search for a City:</h2>
-              <textarea class="col form-inline"></textarea>
+              <textarea class="col form-inline" id="search"></textarea>
+              <div col>
+                <ul id="list-searches"></ul>
+              </div>
             </div>
             <div class="col-9 main-display">
                 <div class="col current">
-                    <h2> City (<span id="month"></span> / <span id="day"></span> / <span id="year"></span>) <span class="fas fa-cloud-sun"></span></span></h2>
-                    <ul>
+                    <h2> 
+                      <span id="current-city"></span>
+                      (<span id="month"></span>/<span id="day"></span>/<span id="year"></span>) 
+                      <span class="fas fa-cloud-sun"></span></span></h2>
+                    <ul id="current-data">
                         <li>Temp: &#176</li>
                         <li>Wind: MPH</li>
                         <li>Humidity: %</li>
