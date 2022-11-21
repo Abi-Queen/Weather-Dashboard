@@ -25,9 +25,13 @@
 
     <div class="container text-center d-flex">
         <div class="row d-flex">
-            <div class="col justify-content-center search">
-              <h2 clas="col">Search for a City:</h2>
-              <textarea class="col form-inline" id="search"></textarea>
+            <div class="col-3 justify-content-center search">
+              <h2 class="col">Search for a City:</h2>
+              <form id="search" class="card-body">
+                <label class="form-label" for="city-search"> </label>
+                <input name="city" id="city" type="text" autofocus="true" class="form-input" />
+                <button type="submit" class="col-* btn">Get Weather</button>
+              </form>
               <div col>
                 <ul id="list-searches"></ul>
               </div>
@@ -42,7 +46,7 @@
                         <li>Temp: <span id="currentTemp"></span>&#176</li>
                         <li>Wind: <span id="currentWind"></span>MPH</li>
                         <li>Humidity: <span id="currentHum"></span>%</li>
-                        <li>UV Index: <span id="currentUV"></span> </li>
+                        <!-- <li>UV Index: <span id="currentUV"></span> </li> -->
                     </ul>
                 </div>
                 <div class="col">

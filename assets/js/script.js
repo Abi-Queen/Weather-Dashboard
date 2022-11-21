@@ -70,7 +70,7 @@ fetch(`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ap
     $('#currentTemp').text(forecastWeatherData.temperature.value)
     $('#currentWind').text(forecastWeatherData.wind.speed.value)
     $('#currentHum').text(forecastWeatherData.humidity.value)
-    $('#currentUV').text(forecastWeatherData.)
+    // $('#currentUV').text(forecastWeatherData.)
 })
 console.log(JSON.stringify(data))
 }
