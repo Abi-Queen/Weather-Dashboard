@@ -1,5 +1,5 @@
 # Weather-Dashboard
-![screenshot of app](./assets/images/06-server-side-apis-homework-demo.png)
+![screenshot of app](./assets/images/weather-dsh-ss.jpg)
 
 ## Description
 This app allows users to enter view weather forecasts for a city they enter into the search field. For the selected city, the app will display the city's current temperature, wind, humidity, and UV index, as well as the 5-day forecast from the [Open Weather](https://openweathermap.org/forecast5) API. When the user searches for another city, the app will create a button labled with the prevoius city's name, so that users can easily retrieve that city's forecast again by clicking the button. 
