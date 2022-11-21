@@ -18,11 +18,13 @@
     <title>Weather Dashboard</title>
   </head>
 
+  <!-- HEADER -->
   <body>
     <header class="display-flex justify-content-around text-center">
       <h1 class>Weather Dashboard</h1>
     </header>
 
+    <!-- SIDE DISPLAY: SEARCH FORM AND LIST OF PREVIOUS SEARCHES -->
     <div class="container text-center d-flex">
         <div class="row d-flex">
             <div class="col-3 justify-content-center search">
@@ -38,6 +40,8 @@
                 <ul id="list-searches"></ul>
               </div>
             </div>
+
+            <!-- MAIN DISPLAY: CURRENT WEATHER CONDITIONS OF CURRENT CITY -->
             <div class="col-9 main-display">
                 <div class="col current">
                     <h2> 
@@ -51,23 +55,30 @@
                         <!-- <li>UV Index: <span id="currentUV"></span> </li> -->
                     </ul>
                 </div>
+
+                <!-- MAIN DISPLAY: FIVE-DAY FORECAST CARDS -->
                 <div class="col">
                     <h2>5-Day Forecast:</h2>
                     <div class="row forecasts">
-                      <div class="col-2 forecast-card" id="card1">
-                          forecast1
+                      <div class="col-2 card forecast-card" id="card1">
+                        <div class="card-header">day 1</div>
+                        <div class="card-body"></div>
                       </div>
-                      <div class="col-2 forecast-card" id="card2">
-                          forecast2
+                      <div class="col-2 card forecast-card" id="card2">
+                        <div class="card-header">day 2</div>
+                        <div class="card-body"></div>
                       </div>
-                      <div class="col-2 forecast-card" id="card3">
-                          forecast3
+                      <div class="col-2 card forecast-card" id="card3">
+                        <div class="card-header">day 3</div>
+                        <div class="card-body"></div>
                       </div>
-                      <div class="col-2 forecast-card" id="card4">
-                          forecast4
+                      <div class="col-2 card forecast-card" id="card4">
+                        <div class="card-header">day 4</div>
+                        <div class="card-body"></div>
                       </div>
-                      <div class="col-2 forecast-card" id="card5">
-                          forecast5
+                      <div class="col-2 card forecast-card" id="card5">
+                        <div class="card-header">day 5</div>
+                        <div class="card-body"></div>
                       </div>
                     </div>
                 </div>

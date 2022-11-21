@@ -11,15 +11,16 @@ document.getElementById('year').innerHTML = year
 
 
 // capture search input, display current search, save to localStorage as array, display as list
-$('#search').on("click", function() {
+$('.btn').on("click", function() {
     //display current search city name
-    var currentSearch = $('#search').val()
+    var currentSearch = $('#city').val()
     $('#current-city').text(currentSearch)
     //save to localStorage as array
     //localStorage.setItem('search', currentSearch)
     var data = JSON.parse(localStorage.getItem('data')) || []
     data.push(currentSearch)
     localStorage.setItem('data', JSON.stringify(data))
+    on.preventDefault()
 
     //call coord function to return lat and lon vars of city's coordinates
     coord(currentSearch)
