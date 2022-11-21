@@ -7,7 +7,7 @@ This app allows users to enter view weather forecasts for a city they enter into
 Here is a link to the [deployed page.](https://abi-queen.github.io/Weather-Dashboard/)
 
 ## Instructions
-To use this app, open the [deployed page.](https://abi-queen.github.io/Weather-Dashboard/). Enter a city in the search field at the left. Your city's forecast will be displayed to the right. Enter a new city in the search field. Your prevoius searches will be saved as buttons under the search field. Do re-display these previous searches, simply click the buttons.  
+To use this app, open the [deployed page.](https://abi-queen.github.io/Weather-Dashboard/). Enter a city in the search field at the left. Your city's forecast will be displayed to the right. Enter a new city in the search field. Your prevoius searches will be saved in a list under the search field. Do re-display these previous searches, click on the saved city name. 
 
 ## Contributors
 I built this app with HTML, CSS, Markdown, and JavaScript. It uses the Bootstrap, Font Awesome, JQuery, and Moment.js cdn libraries. I also referred to the following resources:
