@@ -1,6 +1,6 @@
 var apiKey = '7fc857720d5a4ee4808c383429e02f26'
 
-// display current date, time in current forecast area html
+// display current date in current current weather area html
 const d = new Date()
 let day = d.getDate()
 let month = d.getMonth()
@@ -8,7 +8,6 @@ let year = d.getFullYear()
 document.getElementById('day').innerHTML = day 
 document.getElementById('month').innerHTML = month 
 document.getElementById('year').innerHTML = year
-
 
 // capture search input, display current search, save to localStorage as array, display as list
 $('.btn').on("click", function() {
@@ -59,13 +58,14 @@ function currentWeatherData(lat, lon){
  })
  // display data from api in current weather div in html
  .then(function(currentWeatherData){
-      $('li').addClass('.searches')
-      $('li').text(data[i].currentSearch)
-      $('#list-searches').append(li)
-  $('#currentTemp').text(currentWeatherData.temperature.value)
-  $('#currentWind').text(currentWeatherData.wind.speed.value)
-  $('#currentHum').text(currentWeatherData.humidity.value)
-  // $('#currentUV').text(currentWeatherData.)
+  //save current weather data as vars
+    let currentTemp = res.temperature.value
+    let currentWind = res.wind.speed.value
+    let currentHum = res.humidity.value
+    //display vars in html by id
+  $('#currentTemp').text(currentTemp)
+  $('#currentWind').text(currentWind)
+  $('#currentHum').text(currentHum)
 })
  console.log(JSON.stringify(currentWeatherData))
 }
@@ -81,7 +81,6 @@ fetch(`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ap
   $('#forecastTemp1').text(forecastWeatherData.temperature.value)
   $('#forecastWind1').text(forecastWeatherData.wind.speed.value)
   $('#forecastHum1').text(forecastWeatherData.humidity.value)
-  // $('#forecastUV1').text(currentWeatherData.)
 })
 console.log(JSON.stringify(data))
 }
