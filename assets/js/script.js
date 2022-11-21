@@ -54,7 +54,8 @@ function coord(city){
 
 // use api to get current weather data for current search's lat and lon
 function currentWeatherData(lat, lon){
- fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`).then(function(res) {
+ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+ .then(function(res) {
     return res.json()
  })
  // display data from api in current weather div in html
@@ -77,11 +78,29 @@ fetch(`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ap
 .then(function(res) {
     return res.json()
 })
-//display data from api in forecast div in html
-.then(function(temperature, wind, humidity){
-  $('#forecastTemp1').text(forecastWeatherData.temperature.value)
-  $('#forecastWind1').text(forecastWeatherData.wind.speed.value)
-  $('#forecastHum1').text(forecastWeatherData.humidity.value)
+//save forecast weather data as vars ... no no no no no they'll all be the same 
+let forecastTemp1 = res.list.main.temp
+let forecastWind1 = res.list.main.wind.speed
+let forecastHum1 = res.main.humidity
+let forecastTemp2 = res.list.main.temp
+let forecastWind2 = res.list.main.wind.speed
+let forecastHum2 = res.main.humidity
+let forecastTemp3 = res.list.main.temp
+let forecastWind3 = res.list.main.wind.speed
+let forecastHum3 = res.main.humidity
+let forecastTemp4 = res.list.main.temp
+let forecastWind4 = res.list.main.wind.speed
+let forecastHum4 = res.main.humidity
+let forecastTemp5 = res.list.main.temp
+let forecastWind5 = res.list.main.wind.speed
+let forecastHum5 = res.main.humidity
+//display data from api in forecast div in html ... I know this isn't the right way...
+.then(function(res){
+  $('#forecastTemp1').text(forecastTemp1)
+  $('#forecastWind1').text(forecastWind1)
+  $('#forecastHum1').text(forecastHum1)
 })
 console.log(JSON.stringify(data))
 }
+
+//how to re-submit saved city name to search field again on click? 
