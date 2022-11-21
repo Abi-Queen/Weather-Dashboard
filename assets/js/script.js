@@ -9,6 +9,8 @@ document.getElementById('day').innerHTML = day
 document.getElementById('month').innerHTML = month 
 document.getElementById('year').innerHTML = year
 
+// display forecast dates in card headers ... I know this isn't the right way to do it...
+
 // capture search input, display current search, save to localStorage as array, display as list
 $('.btn').on("click", function() {
     //display current search city name
@@ -17,7 +19,6 @@ $('.btn').on("click", function() {
     var data = JSON.parse(localStorage.getItem('data')) || []
     data.push(currentSearch)
     localStorage.setItem('currentSearch', JSON.stringify(data))
-    listSearches(data)
     console.log(data)
 
     //call coord function to return lat and lon vars of city's coordinates

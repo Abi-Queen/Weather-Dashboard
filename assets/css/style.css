@@ -59,3 +59,9 @@ h2, h1 {
 #search-list {
   justify-content: space-between;
 }
+
+.forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-left: -50px
+}
