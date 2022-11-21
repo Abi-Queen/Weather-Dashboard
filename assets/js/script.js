@@ -78,10 +78,10 @@ fetch(`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${ap
 })
 //display data from api in forecast div in html
 .then(function(temperature, wind, humidity){
-  $('#currentTemp').text(forecastWeatherData.temperature.value)
-  $('#currentWind').text(forecastWeatherData.wind.speed.value)
-  $('#currentHum').text(forecastWeatherData.humidity.value)
-  // $('#currentUV').text(currentWeatherData.)
+  $('#forecastTemp1').text(forecastWeatherData.temperature.value)
+  $('#forecastWind1').text(forecastWeatherData.wind.speed.value)
+  $('#forecastHum1').text(forecastWeatherData.humidity.value)
+  // $('#forecastUV1').text(currentWeatherData.)
 })
 console.log(JSON.stringify(data))
 }
