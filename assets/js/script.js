@@ -21,7 +21,7 @@ $('#search').on("click", function() {
     data.push(currentSearch)
     localStorage.setItem('data', JSON.stringify(data))
 
-    //get coordinates of currentSearch city
+    //call coord function to return lat and lon vars of city's coordinates
     coord(currentSearch)
 
     //display saved searches as list
@@ -34,6 +34,7 @@ $('#search').on("click", function() {
     }
 })
 
+//use api to find lat and lon of city, send to currentWeatherData function and forecastWeatherData functions
 function coord(city){
   fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`).then(function(res) {
     return res.json()
@@ -48,20 +49,28 @@ function coord(city){
   })
 }
 
+// use api to get current weather data for current search's lat and lon
 function currentWeatherData(lat, lon){
  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`).then(function(res) {
     return res.json()
  })
+ // display data from api in current weather div in html
  .then(function(data){})
  console.log(JSON.stringify(data))
 }
 
+//use api to get forecast weather data for current search's lat and and lon
 function forecastWeatherData(lat, lon){
-fetch(`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`).then(function(res) {
+fetch(`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+.then(function(res) {
     return res.json()
 })
+//display data from api in forecast div in html
 .then(function(data) {
-    
+    $('#currentTemp').text(forecastWeatherData.temperature.value)
+    $('#currentWind').text(forecastWeatherData.wind.speed.value)
+    $('#currentHum').text(forecastWeatherData.humidity.value)
+    $('#currentUV').text(forecastWeatherData.)
 })
 console.log(JSON.stringify(data))
 }
