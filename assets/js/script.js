@@ -12,34 +12,38 @@ document.getElementById('year').innerHTML = year
 // display forecast dates in card headers ... I know this isn't the right way to do it...
 
 // capture search input, display current search, save to localStorage as array, display as list
-$('.btn').on("click", function() {
+$('.btn').on("click", function(event) {
     //display current search city name
+    event.preventDefault()
     var currentSearch = $('input[name=city]').val()
     localStorage.setItem('currentSearch', currentSearch)
     var data = JSON.parse(localStorage.getItem('data')) || []
     data.push(currentSearch)
     localStorage.setItem('currentSearch', JSON.stringify(data))
-    console.log(data)
 
     //call coord function to return lat and lon vars of city's coordinates
+    listSearches(data)
+
     coord(currentSearch)
 })
 
 //display saved searches as list
 const listSearches = function(data) {
+
   for(var i=0; i<data.length; i++)
   {
-      var li = $('<li>')
-      $('li').addClass('.searches')
+      var li = '<li id=list-previous>testing</li>'
+      $('list-previous').addClass('searches')
       $('li').text(data[i].currentSearch)
       $('#list-searches').append(li)
+      //give id to li
   }
 }
-listSearches()
+//onclick pass value of btn to coord function
 
 //use api to find lat and lon of city, send to currentWeatherData function and forecastWeatherData functions
 function coord(city){
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${currentSearch}&limit=5&appid=${apiKey}`).then(function(res) {
+  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`).then(function(res) {
     return res.json()
   })
   .then(function(data){
@@ -54,20 +58,24 @@ function coord(city){
 
 // use api to get current weather data for current search's lat and lon
 function currentWeatherData(lat, lon){
- fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
  .then(function(res) {
     return res.json()
  })
  // display data from api in current weather div in html
  .then(function(currentWeatherData){
+  console.log(currentWeatherData)
   //save current weather data as vars
-    let currentTemp = res.temperature.value
-    let currentWind = res.wind.speed.value
-    let currentHum = res.humidity.value
+    let currentTemp = currentWeatherData.main.temp
+    let currentWind = currentWeatherData.wind.speed
+    let currentHum = currentWeatherData.main.humidity
+    let currentIcon = currentWeatherData.weather[0].icon
+
     //display vars in html by id
   $('#currentTemp').text(currentTemp)
   $('#currentWind').text(currentWind)
   $('#currentHum').text(currentHum)
+  $('#current-icon').attr('src', `http://openweathermap.org/img/wn/${currentIcon}@2x.png`)
 })
  console.log(JSON.stringify(currentWeatherData))
 }
