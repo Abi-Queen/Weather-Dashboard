@@ -47,11 +47,11 @@ const listSearches = function (data) {
   }
 }
 //onclick pass value of btn to coord function
-//$('.btn-secondary').on('click', coord(this.text))
-
 $(document).on("click", ".li-city", function(){
   var cityName = $(this).attr("data-city");
   coord(cityName);
+  //display new city name in main forecast area
+  $('#current-city').text(cityName)
 })
 
 //use api to find lat and lon of city, send to currentWeatherData function and forecastWeatherData functions

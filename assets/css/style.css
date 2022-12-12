@@ -38,6 +38,10 @@ h1 {
   padding: 20px;
 }
 
+.current {
+  background-color: rgb(205, 236, 250)
+}
+
 .forecast-card {
   border: 1px solid black;
   background-color: rgb(23, 30, 105);
