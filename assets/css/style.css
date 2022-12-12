@@ -58,7 +58,7 @@ h1 {
 }
 
 #list-searches {
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 .forecast {

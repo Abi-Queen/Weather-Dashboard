@@ -10,6 +10,13 @@ document.getElementById('month').innerHTML = month
 document.getElementById('year').innerHTML = year
 
 // display forecast dates in card headers: HOW??
+function addOneDay(date) {
+  date.setDatae(date.getDate() + 1)
+  return date
+}
+
+let day1 = date.addOneDay()
+let month1 = date.getMonth()
 
 // capture search input, display current search, save to localStorage as array
 $('.btn').on("click", function (event) {
@@ -25,22 +32,27 @@ $('.btn').on("click", function (event) {
   listSearches(data)
 
   coord(currentSearch)
+
+  //display current search city name in main dashboard
+  $('#current-city').text(currentSearch)
 })
 
-//display saved searches as list
+//display saved searches as list up to 8
 const listSearches = function (data) {
 
   for (var i = 0; i < data.length; i++) {
-    var li = '<li id=list-previous>testing</li>'
-    $('list-previous').addClass('searches')
-    $('li').text(data[i].currentSearch)
+    var li = '<li id=list-previous></li>'
     $('#list-searches').append(li)
-    $('#list-searches li').addClass('btn btn-secondary')
-    //give id to li
+    $('li').text([data[i].currentSearch])
+    $('#list-previous').addClass('btn btn-secondary')
+    //for loop to give id to each btn up to 8 searches?
   }
 }
-//onclick pass value of btn to coord function
-$('.btn-secondary').on('click', coord(this.text))
+
+listSearches()
+
+//add onclick to display previous search data again by pass value of btn to coord function
+$()
 
 //use api to find lat and lon of city, send to currentWeatherData function and forecastWeatherData functions
 function coord(city) {
