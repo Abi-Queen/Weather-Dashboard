@@ -27,6 +27,9 @@ $('.btn').on("click", function (event) {
   listSearches(data)
 
   coord(currentSearch)
+
+  //display current search city name in main dashboard
+  $('#current-city').text(currentSearch)
 })
 
 //display saved searches as list
