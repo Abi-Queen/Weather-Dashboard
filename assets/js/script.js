@@ -91,78 +91,58 @@ function currentWeatherData(lat, lon) {
   //console.log(JSON.stringify(currentWeatherData))
 }
 
-//use api to get forecast weather data for current search's lat and and lon
-function forecastWeatherData(lat, lon) {
-  fetch(`https://api.openweathermap.org//data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-    .then(function (res) {
-      return res.json()
-    })
-    .then(function (forecastWeatherData) {
-      console.log(forecastWeatherData)
-      //save forecast weather data as vars
-      let forecastTemp = forecastWeatherData.main.temp
-      let forecastWind = forecastWeatherData.wind.speed
-      let forecastHum = forecastWeatherData.main.humidity
-      let forecastIcon = forecastWeatherData.weather[0].icon
+// //use api to get forecast weather data for current search's lat and and lon
+// function forecastWeatherData(lat, lon) {
+//   fetch(`https://api.openweathermap.org//data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+//     .then(function (res) {
+//       return res.json()
+//     })
+//     .then(function (forecastWeatherData) {
+//       console.log(forecastWeatherData)
+//       //save forecast weather data as vars
+//       let forecastTemp = forecastWeatherData.main.temp
+//       let forecastWind = forecastWeatherData.wind.speed
+//       let forecastHum = forecastWeatherData.main.humidity
+//       let forecastIcon = forecastWeatherData.weather[0].icon
 
-      //display vars in html by id
-      $('#currentTemp').text(currentTemp)
-      $('#currentWind').text(currentWind)
-      $('#currentHum').text(currentHum)
-      $('#current-icon').attr('src', `http://openweathermap.org/img/wn/${currentIcon}@2x.png`)
-    })
-  //console.log(JSON.stringify(currentWeatherData))
-}
+//       $('#forecast-div').text("");
+//       for (var i = 0; i < res.length; i + 5) {
+//         console.log(i)
+//         var div = $("<div>")
+//         $("#forecast-div").append(div)
+//         div.addClass("col-2 card forecast-card")
+//         div.attr("id", card[i])
 
+//         var divCard[i] = $("<div>")
+//         $("#card1").append(divCard[i])
+//         divCard1.addClass("card-header")
+//         divCard1.attr("id", card - header - [i])
+//         $("#card-header-[i]").text(forecastTemp[i])
 
-function forecastWeatherData(lat, lon) {
-  fetch(`https://api.openweathermap.org//data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-    .then(function (res) {
-      return res.json()
-    })
-    //save forecast weather data as vars ... no no no no no they'll all be the same 
-    /*let forecastTemp1 = res.list.main.temp
-    let forecastWind1 = res.list.main.wind.speed
-    let forecastHum1 = res.main.humidity
-    let forecastTemp2 = res.list.main.temp
-    let forecastWind2 = res.list.main.wind.speed
-    let forecastHum2 = res.main.humidity
-    let forecastTemp3 = res.list.main.temp
-    let forecastWind3 = res.list.main.wind.speed
-    let forecastHum3 = res.main.humidity
-    let forecastTemp4 = res.list.main.temp
-    let forecastWind4 = res.list.main.wind.speed
-    let forecastHum4 = res.main.humidity
-    let forecastTemp5 = res.list.main.temp
-    let forecastWind5 = res.list.main.wind.speed
-    let forecastHum5 = res.main.humidity*/
-    //display data from api in forecast div in html ... I know this isn't the right way...
-    .then(function (res) {
-      console.log(res);
-      /* $('#forecastTemp1').text(forecastTemp1)
-       $('#forecastWind1').text(forecastWind1)
-       $('#forecastHum1').text(forecastHum1)*/
-      for (var i = 0; i < res.length; i + 8) {
-        console.log(i);
-        /*var div = $("<div>");
-        div.addClass("col-2 card forecast-card");
+//         $()
 
-        var dt = $("<p>");
-        //dt.text(res.list[i].dt_text.split(" "));
+//       }
 
-        div.append(dt);
+//       // for (var i = 0; i < res.length; i + 8) {
+//       //   console.log(i);
+//       //   /*var div = $("<div>");
+//       //   div.addClass("col-2 card forecast-card");
 
-        $("#forecast-div").append(div); */
-      }
+//       //   var dt = $("<p>");
+//       //   //dt.text(res.list[i].dt_text.split(" "));
+
+//       //   div.append(dt);
+
+//       //   $("#forecast-div").append(div); */
+//       // }
 
 
 
 
 
 
-    })
-  //console.log(JSON.stringify(data))
-}
+//     })
+//   //console.log(JSON.stringify(data))
+// }
 
 listSearches(data);
-//how to re-submit saved city name to search field again on click? 
