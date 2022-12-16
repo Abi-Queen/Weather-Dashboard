@@ -11,7 +11,6 @@ document.getElementById('day').innerHTML = day
 document.getElementById('month').innerHTML = month
 document.getElementById('year').innerHTML = year
 
-// display forecast dates in card headers: HOW??
 
 // capture search input, display current search, save to localStorage as array
 $('.btn').on("click", function (event) {
@@ -38,16 +37,15 @@ const listSearches = function (data) {
   for (var i = 0; i < data.length; i++) {
     //var li = '<li id=list-previous></li>'
     var li = $("<li>");
-    li.attr("data-city",data[i])
+    li.attr("data-city", data[i])
     //$('list-previous').addClass('searches')
     li.text(data[i])
     $('#list-searches').append(li)
     li.addClass('btn btn-secondary li-city')
-    //give id to li
   }
 }
 //onclick pass value of btn to coord function
-$(document).on("click", ".li-city", function(){
+$(document).on("click", ".li-city", function () {
   var cityName = $(this).attr("data-city");
   coord(cityName);
   //display new city name in main forecast area
@@ -99,30 +97,52 @@ function forecastWeatherData(lat, lon) {
     .then(function (res) {
       return res.json()
     })
-  //save forecast weather data as vars ... no no no no no they'll all be the same 
-  /*let forecastTemp1 = res.list.main.temp
-  let forecastWind1 = res.list.main.wind.speed
-  let forecastHum1 = res.main.humidity
-  let forecastTemp2 = res.list.main.temp
-  let forecastWind2 = res.list.main.wind.speed
-  let forecastHum2 = res.main.humidity
-  let forecastTemp3 = res.list.main.temp
-  let forecastWind3 = res.list.main.wind.speed
-  let forecastHum3 = res.main.humidity
-  let forecastTemp4 = res.list.main.temp
-  let forecastWind4 = res.list.main.wind.speed
-  let forecastHum4 = res.main.humidity
-  let forecastTemp5 = res.list.main.temp
-  let forecastWind5 = res.list.main.wind.speed
-  let forecastHum5 = res.main.humidity*/
+    .then(function (forecastWeatherData) {
+      console.log(forecastWeatherData)
+      //save forecast weather data as vars
+      let forecastTemp = forecastWeatherData.main.temp
+      let forecastWind = forecastWeatherData.wind.speed
+      let forecastHum = forecastWeatherData.main.humidity
+      let forecastIcon = forecastWeatherData.weather[0].icon
+
+      //display vars in html by id
+      $('#currentTemp').text(currentTemp)
+      $('#currentWind').text(currentWind)
+      $('#currentHum').text(currentHum)
+      $('#current-icon').attr('src', `http://openweathermap.org/img/wn/${currentIcon}@2x.png`)
+    })
+  //console.log(JSON.stringify(currentWeatherData))
+}
+
+
+function forecastWeatherData(lat, lon) {
+  fetch(`https://api.openweathermap.org//data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+    .then(function (res) {
+      return res.json()
+    })
+    //save forecast weather data as vars ... no no no no no they'll all be the same 
+    /*let forecastTemp1 = res.list.main.temp
+    let forecastWind1 = res.list.main.wind.speed
+    let forecastHum1 = res.main.humidity
+    let forecastTemp2 = res.list.main.temp
+    let forecastWind2 = res.list.main.wind.speed
+    let forecastHum2 = res.main.humidity
+    let forecastTemp3 = res.list.main.temp
+    let forecastWind3 = res.list.main.wind.speed
+    let forecastHum3 = res.main.humidity
+    let forecastTemp4 = res.list.main.temp
+    let forecastWind4 = res.list.main.wind.speed
+    let forecastHum4 = res.main.humidity
+    let forecastTemp5 = res.list.main.temp
+    let forecastWind5 = res.list.main.wind.speed
+    let forecastHum5 = res.main.humidity*/
     //display data from api in forecast div in html ... I know this isn't the right way...
     .then(function (res) {
       console.log(res);
-     /* $('#forecastTemp1').text(forecastTemp1)
-      $('#forecastWind1').text(forecastWind1)
-      $('#forecastHum1').text(forecastHum1)*/
-      for(var i=0;i<res.length;i+8)
-      {
+      /* $('#forecastTemp1').text(forecastTemp1)
+       $('#forecastWind1').text(forecastWind1)
+       $('#forecastHum1').text(forecastHum1)*/
+      for (var i = 0; i < res.length; i + 8) {
         console.log(i);
         /*var div = $("<div>");
         div.addClass("col-2 card forecast-card");
@@ -135,11 +155,11 @@ function forecastWeatherData(lat, lon) {
         $("#forecast-div").append(div); */
       }
 
-      
 
-    
 
-      
+
+
+
     })
   //console.log(JSON.stringify(data))
 }
