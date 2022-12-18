@@ -54,7 +54,7 @@ $(document).on("click", ".li-city", function () {
 
 //use api to find lat and lon of city, send to currentWeatherData function and forecastWeatherData functions
 function coord(city) {
-  fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`).then(function (res) {
+  fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`).then(function (res) {
     return res.json()
   })
     .then(function (data) {
@@ -91,58 +91,46 @@ function currentWeatherData(lat, lon) {
   //console.log(JSON.stringify(currentWeatherData))
 }
 
-// //use api to get forecast weather data for current search's lat and and lon
-// function forecastWeatherData(lat, lon) {
-//   fetch(`https://api.openweathermap.org//data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
-//     .then(function (res) {
-//       return res.json()
-//     })
-//     .then(function (forecastWeatherData) {
-//       console.log(forecastWeatherData)
-//       //save forecast weather data as vars
-//       let forecastTemp = forecastWeatherData.main.temp
-//       let forecastWind = forecastWeatherData.wind.speed
-//       let forecastHum = forecastWeatherData.main.humidity
-//       let forecastIcon = forecastWeatherData.weather[0].icon
+//use api to get forecast weather data for current search's lat and and lon
+function forecastWeatherData(lat, lon) {
+  fetch(`https://api.openweathermap.org//data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+    .then(function (res) {
+      return res.json()
+    })
+    .then(function (forecastWeatherData) {
+      console.log(forecastWeatherData)
 
-//       $('#forecast-div').text("");
-//       for (var i = 0; i < res.length; i + 5) {
-//         console.log(i)
-//         var div = $("<div>")
-//         $("#forecast-div").append(div)
-//         div.addClass("col-2 card forecast-card")
-//         div.attr("id", card[i])
+      //create loop through five day forecast data
+      for (var i = 0; i < forecastWeatherData.list.length; i++) {
+        if (forecastWeatherData.list[i].dt_txt.split(" ")[1] === "15:00:00") {
+          console.log(forecastWeatherData.list[i]);
 
-//         var divCard[i] = $("<div>")
-//         $("#card1").append(divCard[i])
-//         divCard1.addClass("card-header")
-//         divCard1.attr("id", card - header - [i])
-//         $("#card-header-[i]").text(forecastTemp[i])
+          //generate divs for forecast cards
+          var div = $("<div>");
+          div.addClass("col-2 card forecast-card");
 
-//         $()
+          //generate p elements with forecast api data temp, wind, hum
+          var dt = $("<h4>");
+          dt.text(forecastWeatherData.list[i].dt_txt.split(" ")[0]);
+          var temp = $("<p>");
+          temp.text("Temp: " + forecastWeatherData.list[i].main.temp);
+          var wind = $("<p>");
+          wind.text("Wind: " + forecastWeatherData.list[i].wind.speed);
+          var hum = $("<p>");
+          hum.text("Humidity: " + forecastWeatherData.list[i].main.humidity);
 
-//       }
-
-//       // for (var i = 0; i < res.length; i + 8) {
-//       //   console.log(i);
-//       //   /*var div = $("<div>");
-//       //   div.addClass("col-2 card forecast-card");
-
-//       //   var dt = $("<p>");
-//       //   //dt.text(res.list[i].dt_text.split(" "));
-
-//       //   div.append(dt);
-
-//       //   $("#forecast-div").append(div); */
-//       // }
+          div.append(dt, temp, wind, hum);
+          $("#forecast-div").append(div);
+        }
+      }
 
 
 
 
 
 
-//     })
-//   //console.log(JSON.stringify(data))
-// }
+    })
+  //   //console.log(JSON.stringify(data))
+}
 
-listSearches(data);
+//listSearches(data);
