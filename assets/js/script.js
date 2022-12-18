@@ -86,7 +86,7 @@ function currentWeatherData(lat, lon) {
       $('#currentTemp').text(currentTemp)
       $('#currentWind').text(currentWind)
       $('#currentHum').text(currentHum)
-      $('#current-icon').attr('src', `http://openweathermap.org/img/wn/${currentIcon}@2x.png`)
+      $('#current-icon').attr('src', `https://openweathermap.org/img/wn/${currentIcon}@2x.png`)
     })
   //console.log(JSON.stringify(currentWeatherData))
 }
