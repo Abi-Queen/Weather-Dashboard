@@ -77,9 +77,9 @@ function currentWeatherData(lat, lon) {
     .then(function (currentWeatherData) {
       console.log(currentWeatherData)
       //save current weather data as vars
-      let currentTemp = currentWeatherData.main.temp
-      let currentWind = currentWeatherData.wind.speed
-      let currentHum = currentWeatherData.main.humidity
+      let currentTemp = currentWeatherData['main']['temp']
+      let currentWind = currentWeatherData['wind']['speed']
+      let currentHum = currentWeatherData['main']['humidity']
       let currentIcon = currentWeatherData.weather[0].icon
 
       //display vars in html by id
